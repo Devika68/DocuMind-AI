@@ -38,9 +38,14 @@ if (!process.env.JWT_SECRET) {
 
 app.use(helmet());
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://documind-ai-frontend-lh7w.onrender.com",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
