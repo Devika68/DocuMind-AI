@@ -389,6 +389,7 @@ if (file.size > MAX_FILE_SIZE) {
     try {
       const response = await fetch("https://documind-ai-buwz.onrender.com/api/chat", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
