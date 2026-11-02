@@ -387,7 +387,7 @@ if (file.size > MAX_FILE_SIZE) {
     setIsAsking(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/chat", {
+      const response = await fetch("https://documind-ai-buwz.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -446,7 +446,7 @@ if (file.size > MAX_FILE_SIZE) {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/summarize",
+        "https://documind-ai-buwz.onrender.com/api/summarize",
         {
   method: "POST",
   credentials: "include",
@@ -1315,7 +1315,7 @@ function App() {
 
     const checkSession = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/auth/me", {
+        const response = await fetch("https://documind-ai-buwz.onrender.com/api/auth/me", {
           method: "GET",
           credentials: "include",
         });
@@ -1361,7 +1361,7 @@ function App() {
   // Log out the current user
   const handleLogout = async () => {
     try {
-      await fetch("http://localhost:5000/api/auth/logout", {
+      await fetch("https://documind-ai-buwz.onrender.com/api/auth/logout", {
         method: "POST",
         credentials: "include",
       });
