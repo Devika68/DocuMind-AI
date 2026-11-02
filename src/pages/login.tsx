@@ -41,7 +41,7 @@ function Login({ onAuthenticated }: LoginProps) {
       setIsLoading(true);
 
       const response = await fetch(
-        "https://documind-ai-buwz.onrender.com",
+        "https://documind-ai-buwz.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {

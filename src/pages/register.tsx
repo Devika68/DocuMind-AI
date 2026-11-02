@@ -55,7 +55,7 @@ function Register({ onAuthenticated }: RegisterProps) {
       setIsLoading(true);
 
       const response = await fetch(
-        "https://documind-ai-buwz.onrender.com",
+        "https://documind-ai-buwz.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
