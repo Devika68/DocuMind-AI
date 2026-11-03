@@ -128,6 +128,14 @@ function Navbar() {
 // ================= PRODUCT PREVIEW =================
 
 function ProductPreview({ user }: { user: AuthUser }) {
+  const currentHour = new Date().getHours();
+
+const greeting =
+  currentHour < 12
+    ? "Good morning!"
+    : currentHour < 17
+    ? "Good afternoon!"
+    : "Good evening!";
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [pdfPage, setPdfPage] = useState(1);
@@ -746,7 +754,7 @@ const renderInlineContent = (text: string): ReactNode[] => {
                 </p>
 
                 <h2 className="mt-1 text-xl font-semibold">
-                  Good morning!
+                  {greeting}
                 </h2>
               </div>
 
@@ -837,7 +845,7 @@ const renderInlineContent = (text: string): ReactNode[] => {
                     id="pdf-preview"
                     src={`${pdfUrl}#page=${pdfPage}`}
                     title={`Uploaded PDF preview - page ${pdfPage}`}
-                    className="h-[500px] w-full"
+                    className="h-[400px] w-full sm:h-[500px] lg:h-[600px]"
                   />
                 </div>
 
