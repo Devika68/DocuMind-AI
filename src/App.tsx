@@ -127,7 +127,7 @@ function Navbar() {
 
 // ================= PRODUCT PREVIEW =================
 
-function ProductPreview() {
+function ProductPreview({ user }: { user: AuthUser }) {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [pdfPage, setPdfPage] = useState(1);
@@ -153,7 +153,7 @@ function ProductPreview() {
   // Load saved conversations
   const [conversations, setConversations] = useState<ChatConversation[]>(() => {
     try {
-      const savedChats = localStorage.getItem("documind-chat-history");
+      const savedChats = localStorage.getItem(`documind-chat-history-${user.id}`);
 
       if (!savedChats) return [];
 
@@ -172,13 +172,13 @@ function ProductPreview() {
   useEffect(() => {
     try {
       localStorage.setItem(
-        "documind-chat-history",
+        `documind-chat-history-${user.id}`,
         JSON.stringify(conversations)
       );
     } catch (error) {
       console.error("Could not save chat history:", error);
     }
-  }, [conversations]);
+  }, [conversations, user.id]);
 
   const [activeConversationId, setActiveConversationId] = useState<
     string | null
@@ -1297,7 +1297,7 @@ function WorkspacePage({ user, onLogout }: WorkspacePageProps) {
           </div>
         </header>
 
-        <ProductPreview />
+       <ProductPreview user={user} />
       </div>
     </main>
   );
